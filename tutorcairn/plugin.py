@@ -47,6 +47,9 @@ config: t.Dict[str, t.Dict[str, t.Any]] = {
         "VECTOR_DOCKER_IMAGE": "docker.io/timberio/vector:0.25.1-alpine",
         # Auto sync user roles
         "AUTH_ROLES_SYNC_AT_LOGIN": False,
+        "APP_NAME": "Noon Dashboard",
+        "APP_ICON": "https://d19mbak9hk3cwy.cloudfront.net/wp-content/uploads/2022/10/edly-site-logo-new.svg",
+        "APP_FAVICONS": "https://d19mbak9hk3cwy.cloudfront.net/wp-content/uploads/2022/10/edly-site-logo-new.svg",
     },
     "unique": {
         "CLICKHOUSE_PASSWORD": "{{ 20|random_string }}",

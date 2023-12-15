@@ -113,6 +113,37 @@ OAUTH_PROVIDERS = [
     }
 ]
 CUSTOM_SECURITY_MANAGER = cairn_sso.OpenEdxSsoSecurityManager
+
+# Visual Customizations
+APP_NAME = "{{ CAIRN_APP_NAME }}"
+APP_ICON = "{{ CAIRN_APP_ICON }}"
+APP_ICON_WIDTH = 200
+FAVICONS = [{"href": "{{ CAIRN_APP_FAVICONS }}"}]
+
+# THEME_OVERRIDES is used for adding custom theme to superset
+# THEME_OVERRIDES = {
+#   "borderRadius": 4,
+#   "colors": {
+#    "primary": {
+#       "base": '#1C355E',
+#       "dark1": "#000000",
+#       "dark2": '#FFFFFF',
+#       "light4": '#ea6852'
+#    },
+#     "greyscale": {
+#       "base": '#1C355E',
+#       "dark1": '#1C355E',
+#       "light1": '#1C355E',
+#       "light2": '#ea6852',
+#       "light3": '#ea6852',
+#       "light4": '#1C355E'
+#     },
+#     "text": {
+#       "label": '#FF1493',
+#     }
+#   }
+# }
+
 # Update roles on login: this will cause all roles (except those that are preserved) to
 # be ovewritten.
 AUTH_ROLES_SYNC_AT_LOGIN = {{ CAIRN_AUTH_ROLES_SYNC_AT_LOGIN }}
