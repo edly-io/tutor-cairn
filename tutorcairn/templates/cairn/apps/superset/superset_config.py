@@ -23,6 +23,20 @@ ENABLE_PROXY_FIX = True
 
 {% if not ENABLE_HTTPS %}
 TALISMAN_ENABLED = False
+{% else %}
+TALISMAN_CONFIG = {
+    "content_security_policy": {
+    "default-src": ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+    "img-src": '*',
+    "worker-src": ["'self'", "blob:"],
+    "connect-src": [
+        "'self'",
+        "https://api.mapbox.com",
+        "https://events.mapbox.com",
+    ],
+    "object-src": "'none'",
+    }
+            }
 {% endif %}
 
 # Languages
