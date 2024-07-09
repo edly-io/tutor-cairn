@@ -122,14 +122,14 @@ THEME_OVERRIDES = {
       "base": '#1C355E',
       "dark1": "#000000",
       "dark2": '#FFFFFF',
-      "light4": '#ea6852'
+      "light4": '#00C1DE'
    },
     "greyscale": {
       "base": '#1C355E',
       "dark1": '#1C355E',
       "light1": '#1C355E',
-      "light2": '#ea6852',
-      "light3": '#ea6852',
+      "light2": '#00C1DE',
+      "light3": '#00C1DE',
       "light4": '#1C355E'
     },
     "text": {
