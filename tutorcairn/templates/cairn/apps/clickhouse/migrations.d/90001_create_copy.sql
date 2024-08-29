@@ -1,3 +1,4 @@
+Drop TABLE IF EXISTS _tracking;
 CREATE TABLE _tracking
 (
     `time` DateTime,
@@ -6,6 +7,7 @@ CREATE TABLE _tracking
 ENGINE MergeTree
 ORDER BY time;
 
+Drop TABLE IF EXISTS events;
 CREATE TABLE events
 (
     `time` DateTime,
@@ -27,5 +29,6 @@ SELECT
     JSONExtractString(message, 'event_source') AS event_source
 FROM _tracking;
 
+DROP POLICY IF EXISTS common ON events;
 -- Grant everyone access to the events table
 CREATE ROW POLICY common ON events FOR SELECT USING 1 TO ALL;

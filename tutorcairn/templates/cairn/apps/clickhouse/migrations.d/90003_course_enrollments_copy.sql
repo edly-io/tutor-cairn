@@ -1,3 +1,5 @@
+Drop TABLE IF EXISTS openedx_course_enrollments;
+
 CREATE TABLE openedx_course_enrollments
 (
     `created` DateTime NULL,
@@ -8,6 +10,7 @@ CREATE TABLE openedx_course_enrollments
 )
 ENGINE = MySQL('{{ MYSQL_HOST }}:{{ MYSQL_PORT }}', '{{ OPENEDX_MYSQL_DATABASE }}', 'student_courseenrollment', '{{ OPENEDX_MYSQL_USERNAME }}', '{{ OPENEDX_MYSQL_PASSWORD }}');
 
+Drop TABLE IF EXISTS openedx_user_profiles;
 CREATE TABLE openedx_user_profiles
 (
     `user_id` UInt64,
@@ -20,6 +23,7 @@ CREATE TABLE openedx_user_profiles
 )
 ENGINE = MySQL('{{ MYSQL_HOST }}:{{ MYSQL_PORT }}', '{{ OPENEDX_MYSQL_DATABASE }}', 'auth_userprofile', '{{ OPENEDX_MYSQL_USERNAME }}', '{{ OPENEDX_MYSQL_PASSWORD }}');
 
+Drop TABLE IF EXISTS openedx_users;
 CREATE TABLE openedx_users
 (
     `id` UInt64,
@@ -49,6 +53,9 @@ SELECT
 FROM openedx_course_enrollments
 INNER JOIN openedx_user_profiles ON openedx_course_enrollments.user_id = openedx_user_profiles.user_id
 INNER JOIN openedx_users ON openedx_course_enrollments.user_id = openedx_users.id;
+
+
+DROP POLICY IF EXISTS common ON course_enrollments;
 
 -- Grant everyone access to the view
 CREATE ROW POLICY common ON course_enrollments FOR SELECT USING 1 TO ALL;

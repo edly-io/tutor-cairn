@@ -1,3 +1,4 @@
+Drop TABLE IF EXISTS _openedx_block_completion;
 CREATE TABLE _openedx_block_completion
 (
     `modified` DateTime NULL,
@@ -23,6 +24,8 @@ SELECT
     course_blocks.full_name as full_name
 FROM _openedx_block_completion
 INNER JOIN course_blocks ON _openedx_block_completion.block_key = course_blocks.block_key;
+
+DROP POLICY IF EXISTS common ON course_block_completion;
 
 -- Grant everyone access to the view
 CREATE ROW POLICY common ON course_block_completion FOR SELECT USING 1 TO ALL;

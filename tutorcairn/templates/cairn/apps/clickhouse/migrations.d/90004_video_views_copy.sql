@@ -1,3 +1,4 @@
+Drop TABLE IF EXISTS video_events;
 CREATE TABLE video_events
 (
     `course_id` String,
@@ -60,6 +61,9 @@ ASOF LEFT JOIN (
 ON course_id_start = course_id AND video_id_start = video_id AND user_id_start = user_id AND start_time < end_time
 WHERE end_event IN ('pause_video', 'stop_video', 'seek_video');
 
+
+DROP POLICY IF EXISTS common ON video_events;
+DROP POLICY IF EXISTS common ON video_view_segments;
 
 CREATE ROW POLICY common ON video_events FOR SELECT USING 1 TO ALL;
 CREATE ROW POLICY common ON video_view_segments FOR SELECT USING 1 TO ALL;
