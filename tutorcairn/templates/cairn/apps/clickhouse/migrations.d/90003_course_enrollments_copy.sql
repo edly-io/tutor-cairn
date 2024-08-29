@@ -34,6 +34,7 @@ ENGINE = MySQL('{{ MYSQL_HOST }}:{{ MYSQL_PORT }}', '{{ OPENEDX_MYSQL_DATABASE }
 
 -- enable live views
 set allow_experimental_live_view = 1;
+Drop TABLE IF EXISTS course_enrollments;
 
 CREATE LIVE VIEW course_enrollments WITH PERIODIC REFRESH 30 AS
 SELECT

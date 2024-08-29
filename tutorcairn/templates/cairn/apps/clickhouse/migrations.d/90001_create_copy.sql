@@ -20,6 +20,7 @@ CREATE TABLE events
 ENGINE MergeTree
 ORDER BY time;
 
+Drop TABLE IF EXISTS _events_mv;
 CREATE MATERIALIZED VIEW _events_mv TO events AS
 SELECT
     time,

@@ -1,5 +1,7 @@
 -- Here we add a 'end_position >= start_position' constraint, to avoid broken segments.
 -- It happens, in particular when users pause/play/skip quickly.
+Drop TABLE IF EXISTS video_view_segments;
+
 CREATE OR REPLACE VIEW video_view_segments AS
 SELECT
     course_id,

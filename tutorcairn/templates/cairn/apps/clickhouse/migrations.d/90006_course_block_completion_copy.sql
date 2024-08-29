@@ -13,6 +13,8 @@ ENGINE = MySQL('{{ MYSQL_HOST }}:{{ MYSQL_PORT }}', '{{ OPENEDX_MYSQL_DATABASE }
 -- enable live views
 set allow_experimental_live_view = 1;
 
+Drop TABLE IF EXISTS course_block_completion;
+
 CREATE LIVE VIEW course_block_completion WITH PERIODIC REFRESH 30 AS
 SELECT
     _openedx_block_completion.course_key AS course_id,

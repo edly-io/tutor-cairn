@@ -12,6 +12,8 @@ ENGINE MergeTree
 ORDER BY time;
 
 -- Collect video events and store them in the video_events table
+Drop TABLE IF EXISTS _video_events_mv;
+
 CREATE MATERIALIZED VIEW _video_events_mv TO video_events AS
 SELECT
     JSONExtract(message, 'context', 'course_id', 'String') AS course_id,
@@ -22,6 +24,8 @@ SELECT
     JSONExtractFloat(JSONExtractString(message, 'event'), 'currentTime') AS position
 FROM _tracking
 WHERE name IN ('play_video', 'pause_video', 'stop_video');
+Drop TABLE IF EXISTS _video_seek_events_mv;
+
 CREATE MATERIALIZED VIEW _video_seek_events_mv TO video_events AS
 SELECT
     JSONExtract(message, 'context', 'course_id', 'String') AS course_id,
@@ -34,6 +38,8 @@ FROM _tracking
 WHERE name = 'seek_video';
 
 -- For ease of access, create a simple view to aggregate the viewed video segments
+Drop TABLE IF EXISTS video_view_segments;
+
 CREATE VIEW video_view_segments AS
 SELECT
     course_id,
